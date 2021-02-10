@@ -46,7 +46,7 @@ def index():
     else:
 
       curr_answer=request.form['answer_python']
-      correct_answer=questions[session["current_question"]]["answer"]
+      correct_answer=questions[session.get("current_question", '')]["answer"]
 # 
       if curr_answer == correct_answer[:len(curr_answer)]: 
         py_summary["correct"].append(int(session["current_question"]))
