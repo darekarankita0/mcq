@@ -27,10 +27,7 @@ app.nquestions=len(questions)
    # shuffle(questions[item]['options'])   
 #
 #
-# Route for the URL /python accepting GET and POST methods
-# We are using session variables to keep track of the current question
-# the user is in and show him just that question even if he reloads the page
-# or opens the page in a new tab.
+
 @app.route('/python', methods=['GET', 'POST'])
 def index():
 #	
@@ -74,15 +71,11 @@ def index():
         return render_template("end_miniquiz.html",summary=py_summary)
 #  
   if "current_question" not in session:
-    # The first time the page is loaded, the current question is not set.
-    # This means that the user has not started to quiz yet. So set the 
-    # current question to question 1 and save it in the session.
+
     session["current_question"] = "1"
 #  
   elif session["current_question"] not in questions:
-    # If the current question number is not available in the questions
-    # dictionary, it means that the user has completed the quiz. So show
-    # the summary page.
+
     py_summary["wrong"]=list(set(py_summary["wrong"]))
     py_summary["correct"]=list(set(py_summary["correct"]))	
     return render_template("end_miniquiz.html",summary=py_summary)
