@@ -15,8 +15,8 @@ py_summary={}
 py_summary["correct"]=[]
 py_summary["wrong"]=[]
 py_summary["curretq"]=1
-#score = len(py_summary["correct"])
-#py_summary["score"]=[]
+score = len(py_summary["correct"])
+py_summary["score"]=[]
 
 #
 app.nquestions=len(questions)
@@ -47,8 +47,8 @@ def index():
 # 
       if curr_answer == correct_answer[:len(curr_answer)]: 
         py_summary["correct"].append(int(session["current_question"]))
-        #score = len(py_summary["correct"])
-        #py_summary["score"]
+        score = len(py_summary["correct"])
+        py_summary["score"]
 #      
       else:
         py_summary["wrong"].append(int(session["current_question"]))
@@ -66,8 +66,8 @@ def index():
         # else redirect to the summary template as the quiz is complete.
         py_summary["wrong"]=list(set(py_summary["wrong"]))
         py_summary["correct"]=list(set(py_summary["correct"]))	
-        #score = len(py_summary["correct"])
-        #py_summary["score"]=list(set(py_summary["score"]))
+        score = len(py_summary["correct"])
+        py_summary["score"]=list(set(py_summary["score"]))
         return render_template("end_miniquiz.html",summary=py_summary)
 #  
   if "current_question" not in session:
